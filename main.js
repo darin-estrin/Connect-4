@@ -1,6 +1,5 @@
 $(document).ready(function () {
     initializeGame();
-    //handleCoinDrop();
 });
 
 var gameBoard = [];
@@ -62,12 +61,13 @@ function displayBoard () { //would use this to rember game page
 
 
 // select column to drop in
-//$('.').on('click', handleCoinDrop(){
-  //console.log(e);
-//});
+$('div.zero').on('click', function(event){
+  console.log($(event));
+});
 
 function handleCoinDrop(column) {
   turnOver = false;
+  // column is equal to the colum that has been clicked on
   switch (column) {
     case column1:
       column = column1;
@@ -90,7 +90,8 @@ function handleCoinDrop(column) {
     default:
       break;
   }
-
+  // check the active column for lowest possible row to add to
+  // need to change class of "full" to indicate which player owns that square
   for (var i = column.length - 1; (!turnOver && i > 0); i--) {
     if($(column[i]).hasClass('full') === false) {
       $(column[i]).addClass('full');
@@ -100,14 +101,38 @@ function handleCoinDrop(column) {
   console.log(column);
 }
 
+function CheckForWin(){
+
+  // Need to check for vertical win by adding iterating down through column
+  // and checking for a match
+
+
+
+
+  // Check for horizontal win by comparing columns to both the left and right
+  // of the most recent chip dropped
+
+
+
+  // Check for diagnal win by using a combination for adding 1 to the row and 1
+  // to the columm, adding 1 to the row and substacting 1 from the column and vice versa.
+
+
+}
+
 /////////////////////////////////////////////////
 // Jorge's Progress
 
 function displayPlayer (){
     if(currentPlayer === 1) {
-       console.log('player1');
+      // changes players color to red if active and black if waiting
+      $('.player1').find('h2').addClass('active_player');
+      $('.player2').find('h2').removeClass('active_player');
+      console.log('player1');
     }else {
       (currentPlayer = 0);
+      $('.player2').find('h2').addClass('active_player');
+      $('.player1').find('h2').removeClass('active_player');
       console.log('player2');
     }
 }
