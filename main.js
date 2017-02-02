@@ -115,7 +115,9 @@ function testForWin (row, column, direction, player) {
 
 
 var turnOver = false;
-var currentPlayer = 1;
+var player1 = 1;
+var player2 = 0;
+var currentPlayer = player1;
 var column1 = $(document).find('.column_1');
 var column2 = $(document).find('.column_2');
 var column3 = $(document).find('.column_3');
@@ -167,8 +169,6 @@ function handleCoinDrop(column) {
   //console.log(column);
 }
 
-/////////////////////////////////////////////////
-// Jorge's Progress
 
 function displayPlayer (){
     if(currentPlayer === 1) {
@@ -184,3 +184,39 @@ function displayPlayer (){
     }
 }
 displayPlayer();
+
+// function createPlayers() {
+//     var player1 = $('.player1')
+//     var player2 = $('.player2')
+//
+// }
+
+// function changeActivePlayer(currentPlayer) {
+//     if (currentPlayer == player1 ) {
+//         return player2;
+//     }
+//     else if (currentPlayer == player2) {
+//         return player1;
+//     }
+// }
+
+function changeActivePlayer() {
+    if (currentPlayer === 1 ) {
+        currentPlayer = 0;
+    }
+    else if (currentPlayer === 0) {
+        currentPlayer = 1;
+    }
+}
+
+changeActivePlayer(currentPlayer);
+console.log("current player:", currentPlayer);
+
+changeActivePlayer(currentPlayer);
+console.log("2current player:", currentPlayer);
+
+changeActivePlayer(currentPlayer);
+console.log("current player:", currentPlayer);
+
+changeActivePlayer(currentPlayer);
+console.log("2current player:", currentPlayer);
