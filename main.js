@@ -1,9 +1,64 @@
 $(document).ready(function () {
     initializeGame();
 });
+function initializeGame() {
+    $("button").click(dropToken);
+}
+var numRows = 5;
+var numCols = 7;
+var left = 1;
+var right = 2;
+var down = 3;
+var diagRight = 1;
+var diagLeft = 2;
+var gameBoard = [
+    [0],
+    [0],
+    [0],
+    [0],
+    [0]
+];
+buildBoard();
+function buildBoard() {
+    var colChoice = Number(document.getElementById('chipColumn').value);
+    console.log('Column  '+colChoice);
+    for (var i = 0; i < numRows; i++) {
+        for (var j = 0; j < numCols; j++) {
+            gameBoard [i][j] = j;
+        }
+    }
+    console.log(gameBoard);
+}
+function dropToken (row, column, direction, player) {
+//drop Token code block
+    testForWin(row, column, direction, player);
+}
+function testForWin (row, column, direction, player) {
+    var winner = false;
+    switch (direction) {
+        case left:
+            winner = ((gameBoard [row][column] = player) && (gameBoard [row][column-1]) && (gameBoard [row][column-2]));
+            break;
+        case right:
+            winner = ((gameBoard [row][column] = player) && (gameBoard [row]+[column + 1]) && (gameBoard [row+2][column + 2]));
+            break;
+        case diagLeft:
+            winner = ((gameBoard [row][column] = player) && (gameBoard [row-1][column - 1]) && (gameBoard [row-2][column - 2]));
+            break;
+        case diagRight:
+            winner = ((gameBoard [row][column] = player) && (gameBoard [row]+[column + 1]) && (gameBoard [row+2][column + 2]));
+            break;
+        case down:
+            winner = ((gameBoard [row][column] = player) && (gameBoard [row - 1][column]) && (gameBoard [row - 2][column]));
+            break;
+    }
+    return winner;
+}
 
-var gameBoard = [];
-var turnOver = false;
+////////////////////////////////////////////////////////////
+// Darin's progress
+
+
 var currentPlayer = 1;
 var column1 = $(document).find('.column_1');
 var column2 = $(document).find('.column_2');
@@ -11,54 +66,6 @@ var column3 = $(document).find('.column_3');
 var column4 = $(document).find('.column_4');
 var column5 = $(document).find('.column_5');
 var column6 = $(document).find('.column_6');
-
-function initializeGame() {
-    //var innerArray = [];
-    $('.colChoice').click(dropChip);
-    for (var i = 0; i <= 5; i++){
-        gameBoard.push([]);
-        for (j = 0; j <= 6; j++){
-            gameBoard[i].push('EMPTY');
-        }
-    }
-}
-
-var numRows = 6;
-var numCols = 7;
-var empty = 'EMPTY';
-var full = 'FULL';
-
-function dropChip() {
-    var done = false;
-    var j = Number(document.getElementById('ColNum').value)-1;
-    for (var i = numRows-1; ((i > 0) && (!done)); i--) {
-        if (gameBoard [i][j] == empty) {
-            gameBoard [i][j] = full;
-            done = true;
-            console.log (gameBoard[i][j]);
-        }
-    }
-    displayBoard();
-}
-
-function displayBoard () { //would use this to rember game page
-    for (var i = 0; i < numRows; i++) {
-        for (var j = 0; j < numCols; j++) {
-            if (gameBoard [i][j] == empty) {
-                gameBoard [i][j] = empty;
-            }
-            else {
-                gameBoard [i][j] = full;
-
-            }
-            console.log('row ' + i + ' ' + gameBoard [i][j]);
-        }
-    }
-}
-
-////////////////////////////////////////////////////////////
-// Darin's progress
-
 
 // select column to drop in
 $('div.zero').on('click', function(event){
