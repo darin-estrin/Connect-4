@@ -7,23 +7,32 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <script src="main.js"></script>
+        <style>
+            @font-face {
+                font-family: 'mario_font';
+                src: url('images/Fonts/SuperMario256.ttf')
+            }
+        </style>
     </head>
     <body>
         <section class="container">
             <div class="row header">
                 <div class="col-xs-12">
-                    <h1>Connect Mario</h1>
+                    <h1><span style="font-family: mario_font; color: red">C</span><span style="font-family: mario_font; color: blue">o</span><span                      style="font-family: mario_font; color: green">n</span><span style="font-family: mario_font; color: blue">n</span><span                              style="font-family: mario_font; color: yellow">e</span><span style="font-family: mario_font; color: green">c</span><span                            style="font-family: mario_font; color: red">t</span>
+             <span style="font-family: mario_font; color: green">M</span><span style="font-family: mario_font; color:blue">a</span><span                            style="font-family: mario_font; color: yellow">r</span><span style="font-family: mario_font; color: red">i</span><span                              style="font-family: mario_font; color: green">o</span>
+                    </h1>
+
                 </div>
             </div>
         </section>
         <section class="container col-xs-8">
             <div class="row zero col-xs-8">
-                <div class="coin_slot column_1 col-xs-offset-1 col-xs-1">1</div>
-                <div class="coin_slot column_2 col-xs-1">2</div>
-                <div class="coin_slot column_3 col-xs-1">3</div>
-                <div class="coin_slot column_4 col-xs-1">4</div>
-                <div class="coin_slot column_5 col-xs-1">5</div>
-                <div class="coin_slot column_6 col-xs-1">6</div>
+                <div class="column coin_slot column_1 col-xs-offset-1 col-xs-1">1</div>
+                <div class="column coin_slot column_2 col-xs-1">2</div>
+                <div class="column coin_slot column_3 col-xs-1">3</div>
+                <div class="column coin_slot column_4 col-xs-1">4</div>
+                <div class="column coin_slot column_5 col-xs-1">5</div>
+                <div class="column coin_slot column_6 col-xs-1">6</div>
             </div>
         </section>
         <section class="container col-xs-8" id="game_body">

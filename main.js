@@ -68,8 +68,9 @@ var column5 = $(document).find('.column_5');
 var column6 = $(document).find('.column_6');
 
 // select column to drop in
-$('div.zero').on('click', function(event){
-  console.log($(event));
+$(this).on('click', function(event){
+  console.log(event.target);
+
 });
 
 function handleCoinDrop(column) {
