@@ -6,16 +6,18 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <!--
         <script src="genericFirebaseBackend.js"></script>
+      -->
         <script src="main.js"></script>
-
+        <!--
         <script>
         	var connect4Model = new GenericFBModel('Mario_Connect_4',boardUpdated);
         	function boardUpdated(data){
         		console.log(data);
         	}
 	      </script>
-
+        -->
     </head>
     <body>
         <section class="container">
@@ -27,12 +29,12 @@
         </section>
         <section class="container col-xs-8">
             <div class="row zero col-xs-8">
-                <div class="coin_slot column_1 col-xs-offset-1 col-xs-1">1</div>
-                <div class="coin_slot column_2 col-xs-1">2</div>
-                <div class="coin_slot column_3 col-xs-1">3</div>
-                <div class="coin_slot column_4 col-xs-1">4</div>
-                <div class="coin_slot column_5 col-xs-1">5</div>
-                <div class="coin_slot column_6 col-xs-1">6</div>
+                <div class="coin_slot column column_1 col-xs-offset-1 col-xs-1">1</div>
+                <div class="coin_slot column column_2 col-xs-1">2</div>
+                <div class="coin_slot column column_3 col-xs-1">3</div>
+                <div class="coin_slot column column_4 col-xs-1">4</div>
+                <div class="coin_slot column column_5 col-xs-1">5</div>
+                <div class="coin_slot column column_6 col-xs-1">6</div>
             </div>
         </section>
         <section class="container col-xs-8" id="game_body">
