@@ -6,7 +6,16 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="genericFirebaseBackend.js"></script>
         <script src="main.js"></script>
+
+        <script>
+        	var connect4Model = new GenericFBModel('Mario_Connect_4',boardUpdated);
+        	function boardUpdated(data){
+        		console.log(data);
+        	}
+	      </script>
+
     </head>
     <body>
         <section class="container">
