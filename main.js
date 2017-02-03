@@ -72,7 +72,6 @@ function displayPlayer (){
         console.log('player2');
     }
 }
-
 function changeActivePlayer(player) {
     if (player === 1 ) {
         currentPlayer = 0;
@@ -81,7 +80,6 @@ function changeActivePlayer(player) {
         currentPlayer = 1;
     }
 }
-
 function playerWon(){
     if (player1 === win){
         var playerOneWin =$('<h1>').addClass('player_won').text('You defeated Bowser!');
@@ -90,11 +88,9 @@ function playerWon(){
 
     }
 }
-
 function reset(){
     $('.coin_slot').removeClass('player1_token');
     $('.coin_slot').removeClass('player2_token');
 
-    $('.row').show().find('.coin_slot').show();
-
+    var currentPlayer = player1;
 }
