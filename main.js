@@ -3,8 +3,12 @@ $(document).ready(function(){
     displayPlayer();
     $('.reset_button').click(function() {
         reset();
-    })
+    });
+    $('.reset_button').click(function(){
+      initG2();
+    });
 });
+
 
 var col1 = $('.column_1');
 var col2 = $('.column_2');
@@ -13,18 +17,6 @@ var col4 = $('.column_4');
 var col5 = $('.column_5');
 var col6 = $('.column_6');
 var columChosen;
-var gameBoard = [
-  [0,0,0,0,0,0],
-  [0,0,0,0,0,0],
-  [0,0,0,0,0,0],
-  [0,0,0,0,0,0],
-  [0,0,0,0,0,0]
-];
-var left = 1;
-var right = 2;
-var down = 3;
-var diagRight = 4;
-var diagLeft = 5;
 
 function initGame() {
     $('#column_1').on('click', addPlayerCoin);
@@ -78,10 +70,7 @@ function addPlayerCoin() {
   }
   changeActivePlayer(currentPlayer);
   displayPlayer();
-  // console.log(gameBoard[i]);
-  // console.log(gameBoard[i][columnChosen-1]);
-  // testWin(gameBoard[i], gameBoard[i][columnChosen], left, currentPlayer);
-
+  var testWin = winner(i, columnChosen-1, currentPlayer);
 }
 var playerTurnOver = false;
 var player1 = 1;
@@ -117,7 +106,6 @@ function playerWon(){
 function reset(){
     $('.coin_slot').removeClass('player1_token');
     $('.coin_slot').removeClass('player2_token');
-
     var currentPlayer = player1;
 }
 
@@ -140,26 +128,19 @@ function boardUpdated(data){
     teamFourGame = data.game;
 }
 
-
-function firebase() {
-
-}
-
 function initG2() {
-
     col1 = $('.column_1');
     col2 = $('.column_2');
     col3 = $('.column_3');
     col4 = $('.column_4');
     col5 = $('.column_5');
     col6 = $('.column_6');
-    teamFourGame
 }
 
 function saveData(data) {
     teamFourGame = $('#game_body');
     connect4Model.saveState({"game": teamFourGame.prop('innerHTML')});
-    console.log("Async sucks");
+    console.log("Tada");
 }
 
 function replaceOldWithNew() {
