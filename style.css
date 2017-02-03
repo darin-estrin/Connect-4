@@ -85,9 +85,11 @@ h2 {
 }
 
 .player1_token{
-
+  background-image: url('images/mario_8bit1.png');
+  background-color: #6ce6fb;
 }
 
 .player2_token {
-
+  background-image: url('images/bowser_8bit.png');
+  background-color: black;
 }

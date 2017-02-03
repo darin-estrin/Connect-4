@@ -1,6 +1,7 @@
 
 $(document).ready(function(){
   initGame();
+  displayPlayer();
 });
 
 var gameBoard = [[], [], [], [], [], []];
@@ -30,17 +31,55 @@ function addPlayerCoin() {
   }else if($(this).hasClass('column_3')){
     column = col3;
   }else if ($(this).hasClass('column_4')){
-    column = col5;
+    column = col4;
   }else if ($(this).hasClass('column_5')){
     column = col5;
   } else {
     column = col6;
   }
   for (var i = column.length - 1; (!turnOver && i > 0); i--) {
-    if($(column[i]).hasClass('full') === false) {
-      $(column[i]).addClass('full');
+    if(currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
+      $(column[i]).addClass('player1_token');
       turnOver = true;
+      console.log(column);
+      changeActivePlayer(currentPlayer);
+      displayPlayer();
+    } else if(currentPlayer === 0  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
+      $(column[i]).addClass('player2_token');
+      turnOver = true;
+      console.log(column);
+      changeActivePlayer(currentPlayer);
+      displayPlayer();
     }
   }
-  console.log(column);
+}
+
+
+
+var turnOver = false;
+var player1 = 1;
+var player2 = 0;
+var currentPlayer = player1;
+
+function displayPlayer (){
+  if(currentPlayer === 1) {
+    // changes players color to red if active and black if waiting
+    $('.player1').find('h2').addClass('active_player');
+    $('.player2').find('h2').removeClass('active_player');
+    console.log('player1');
+  }else {
+    currentPlayer = 0;
+    $('.player2').find('h2').addClass('active_player');
+    $('.player1').find('h2').removeClass('active_player');
+    console.log('player2');
+  }
+}
+
+function changeActivePlayer(player) {
+  if (player === 1 ) {
+      currentPlayer = 0;
+  }
+  else if (player === 0) {
+      currentPlayer = 1;
+  }
 }
