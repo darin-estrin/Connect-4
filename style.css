@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "PT Serif", sans-serif;
 }
 
 body {
@@ -42,21 +41,15 @@ body > * {
 
 h1, h2 {
     color: rgba(255, 53, 52, 1);
-    font-weight: 700;
 }
 
 h1 {
     font-size: 8vmin;
-    font-family: 'mario_font';
-
 }
 
 h2 {
     font-size: 5vmin;
-    font-family: 'mario_font';
-
 }
-
 .row.zero {
     padding: 0 0 0 3vmin;
     margin: 0 2vmin 0 2vmin;
@@ -83,3 +76,22 @@ h2 {
     font-family: 'mario_font';
     src: url('images/Fonts/SuperMario256.ttf')
 }
+.player img{
+    height: 25vmin;
+}
+
+span, h1, h2{
+font-family: mario_font;
+}
+ h1 .red{
+    color: red;
+}
+ h1 .blue{
+     color: blue;
+ }
+ h1 .green{
+     color: green;
+ }
+ h1 .yellow{
+     color: yellow;
+ }
