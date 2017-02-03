@@ -1,105 +1,97 @@
-
 $(document).ready(function(){
-  initGame();
-
+    initGame();
+    displayPlayer();
 });
 
+var gameBoard = [[], [], [], [], [], []];
+var col1 = $('.column_1');
+var col2 = $('.column_2');
+var col3 = $('.column_3');
+var col4 = $('.column_4');
+var col5 = $('.column_5');
+var col6 = $('.column_6');
+
 function initGame() {
-
+    $('#column_1').on('click', addPlayerCoin);
+    $('#column_2').on('click', addPlayerCoin);
+    $('#column_3').on('click', addPlayerCoin);
+    $('#column_4').on('click', addPlayerCoin);
+    $('#column_5').on('click', addPlayerCoin);
+    $('#column_6').on('click', addPlayerCoin);
 }
-
+function addPlayerCoin() {
+    var column;
+    turnOver = false;
+    if ($(this).hasClass('column_1')){
+        column = col1;
+    } else if ($(this).hasClass('column_2')){
+        column = col2;
+    }else if($(this).hasClass('column_3')){
+        column = col3;
+    }else if ($(this).hasClass('column_4')){
+        column = col4;
+    }else if ($(this).hasClass('column_5')){
+        column = col5;
+    } else {
+        column = col6;
+    }
+    for (var i = column.length - 1; (!turnOver && i > 0); i--) {
+        if(currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
+            $(column[i]).addClass('player1_token');
+            turnOver = true;
+            console.log(column);
+            changeActivePlayer(currentPlayer);
+            displayPlayer();
+        } else if(currentPlayer === 0  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
+            $(column[i]).addClass('player2_token');
+            turnOver = true;
+            console.log(column);
+            changeActivePlayer(currentPlayer);
+            displayPlayer();
+        }
+    }
+}
 var turnOver = false;
 var player1 = 1;
 var player2 = 0;
 var currentPlayer = player1;
-var column1 = $(document).find('.column_1');
-var column2 = $(document).find('.column_2');
-var column3 = $(document).find('.column_3');
-var column4 = $(document).find('.column_4');
-var column5 = $(document).find('.column_5');
-var column6 = $(document).find('.column_6');
-var columChoice;
 
-// select column to drop in
-$(this).on('click', function(e){
-  console.log(e.target.className);
-  columnChoice = e.target;
-  handleCoinDrop(columnChoice);
-});
-
-function handleCoinDrop(column) {
-  turnOver = false;
-  // column is equal to the colum that has been clicked on
-  switch (column) {
-    case column1:
-      column = column1;
-      break;
-    case column2:
-      column = column2;
-      break;
-    case column3:
-      column = column3;
-      break;
-    case column4:
-      column = column4;
-      break;
-    case column5:
-      column = column5;
-    break;
-    case column6:
-      column = column6;
-      break;
-    default:
-      break;
-  }
-  // check the active column for lowest possible row to add to
-  // need to change class of "full" to indicate which player owns that square
-  for (var i = column.length - 1; (!turnOver && i > 0); i--) {
-    if($(column[i]).hasClass('full') === false) {
-      $(column[i]).addClass('full');
-      turnOver = true;
+function displayPlayer (){
+    if(currentPlayer === 1) {
+        // changes players color to red if active and black if waiting
+        $('.player1').find('h2').addClass('active_player');
+        $('.player2').find('h2').removeClass('active_player');
+        console.log('player1');
+    }else {
+        currentPlayer = 0;
+        $('.player2').find('h2').addClass('active_player');
+        $('.player1').find('h2').removeClass('active_player');
+        console.log('player2');
     }
-  }
-  //console.log(column);
 }
 
-
-
-displayPlayer();
-
-// function createPlayers() {
-//     var player1 = $('.player1')
-//     var player2 = $('.player2')
-//
-// }
-
-// function changeActivePlayer(currentPlayer) {
-//     if (currentPlayer == player1 ) {
-//         return player2;
-//     }
-//     else if (currentPlayer == player2) {
-//         return player1;
-//     }
-// }
-
-function changeActivePlayer() {
-    if (currentPlayer === 1 ) {
+function changeActivePlayer(player) {
+    if (player === 1 ) {
         currentPlayer = 0;
     }
-    else if (currentPlayer === 0) {
+    else if (player === 0) {
         currentPlayer = 1;
     }
 }
 
-changeActivePlayer(currentPlayer);
-console.log("current player:", currentPlayer);
+function playerWon(){
+    if (player1 === win){
+        var playerOneWin =$('<h1>').addClass('player_won').text('You defeated Bowser!');
+    }else{
+        var player2Win =$('<h1>').addClass('player_won').text('You defeated Mario!');
 
-changeActivePlayer(currentPlayer);
-console.log("2current player:", currentPlayer);
+    }
+}
 
-changeActivePlayer(currentPlayer);
-console.log("current player:", currentPlayer);
+function reset(){
+    $('.coin_slot').removeClass('player1_token');
+    $('.coin_slot').removeClass('player2_token');
 
-changeActivePlayer(currentPlayer);
-console.log("2current player:", currentPlayer);
+    $('.row').show().find('.coin_slot').show();
 
+}

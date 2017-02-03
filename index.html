@@ -5,13 +5,8 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <script src="main.js"></script>
-        <!--<style>-->
-            <!--@font-face {-->
-                <!--font-family: 'mario_font';-->
-                <!--src: url('images/Fonts/SuperMario256.ttf')-->
-            <!--}-->
-        <!--</style>-->
+        <script src="main.js" defer></script>
+
     </head>
     <body>
         <section class="container">
@@ -26,12 +21,12 @@
         </section>
         <section class="container col-xs-8">
             <div class="row zero col-xs-8">
-                <div class="column coin_slot column_1 col-xs-offset-1 col-xs-1">1</div>
-                <div class="column coin_slot column_2 col-xs-1">2</div>
-                <div class="column coin_slot column_3 col-xs-1">3</div>
-                <div class="column coin_slot column_4 col-xs-1">4</div>
-                <div class="column coin_slot column_5 col-xs-1">5</div>
-                <div class="column coin_slot column_6 col-xs-1">6</div>
+                <div id='column_1' class="column coin_slot column_1 col-xs-offset-1 col-xs-1">1</div>
+                <div id='column_2' class="column coin_slot column_2 col-xs-1">2</div>
+                <div id='column_3' class="column coin_slot column_3 col-xs-1">3</div>
+                <div id='column_4' class="column coin_slot column_4 col-xs-1">4</div>
+                <div id='column_5' class="column coin_slot column_5 col-xs-1">5</div>
+                <div id='column_6' class="column coin_slot column_6 col-xs-1">6</div>
             </div>
         </section>
         <section class="container col-xs-8" id="game_body">
