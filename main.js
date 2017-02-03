@@ -1,7 +1,9 @@
-
 $(document).ready(function(){
-  initGame();
-  displayPlayer();
+    initGame();
+    displayPlayer();
+    $('.reset_button').click(function() {
+        reset();
+    })
 });
 
 var col1 = $('.column_1');
@@ -25,14 +27,13 @@ var diagRight = 4;
 var diagLeft = 5;
 
 function initGame() {
-  $('#column_1').on('click', addPlayerCoin);
-  $('#column_2').on('click', addPlayerCoin);
-  $('#column_3').on('click', addPlayerCoin);
-  $('#column_4').on('click', addPlayerCoin);
-  $('#column_5').on('click', addPlayerCoin);
-  $('#column_6').on('click', addPlayerCoin);
+    $('#column_1').on('click', addPlayerCoin);
+    $('#column_2').on('click', addPlayerCoin);
+    $('#column_3').on('click', addPlayerCoin);
+    $('#column_4').on('click', addPlayerCoin);
+    $('#column_5').on('click', addPlayerCoin);
+    $('#column_6').on('click', addPlayerCoin);
 }
-
 function addPlayerCoin() {
   turnOver = false;
   if ($(this).hasClass('column_1')){
@@ -82,10 +83,8 @@ function addPlayerCoin() {
   // console.log(gameBoard[i]);
   // console.log(gameBoard[i][columnChosen-1]);
   // testWin(gameBoard[i], gameBoard[i][columnChosen], left, currentPlayer);
+
 }
-
-
-
 var turnOver = false;
 var player1 = 1;
 var player2 = 2;
@@ -103,13 +102,26 @@ function displayPlayer (){
     $('.player1').find('h2').removeClass('active_player');
   }
 }
-
 function changeActivePlayer(player) {
   if (player === 1 ) {
       currentPlayer = 2;
   } else if (player === 2) {
       currentPlayer = 1;
   }
+}
+function playerWon(){
+    if (player1 === win){
+        var playerOneWin =$('<h1>').addClass('player_won').text('You defeated Bowser!');
+    }else{
+        var player2Win =$('<h1>').addClass('player_won').text('You defeated Mario!');
+
+    }
+}
+function reset(){
+    $('.coin_slot').removeClass('player1_token');
+    $('.coin_slot').removeClass('player2_token');
+
+    var currentPlayer = player1;
 }
 
 // function testWin(row, column, direction, player){
@@ -124,3 +136,4 @@ function changeActivePlayer(player) {
 //   //m.play();
 //   //b.play();
 // }
+

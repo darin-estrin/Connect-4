@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: "PT Serif", sans-serif;
 }
 
 body {
@@ -42,21 +41,15 @@ body > * {
 
 h1, h2 {
     color: rgba(255, 53, 52, 1);
-    font-weight: 700;
 }
 
 h1 {
     font-size: 8vmin;
-    font-family: 'mario_font';
-
 }
 
 h2 {
     font-size: 5vmin;
-    font-family: 'mario_font';
-
 }
-
 .row.zero {
     padding: 0 0 0 3vmin;
     margin: 0 2vmin 0 2vmin;
@@ -84,6 +77,27 @@ h2 {
     src: url('images/Fonts/SuperMario256.ttf')
 }
 
+.player img{
+    height: 25vmin;
+}
+
+span, h1, h2{
+font-family: mario_font;
+}
+ h1 .red{
+    color: red;
+}
+ h1 .blue{
+     color: blue;
+ }
+ h1 .green{
+     color: green;
+ }
+ h1 .yellow{
+     color: yellow;
+ }
+
+
 .player1_token{
   background-image: url('images/mario_8bit1.png');
   background-color: #6ce6fb;
@@ -93,3 +107,13 @@ h2 {
   background-image: url('images/bowser_8bit.png');
   background-color: black;
 }
+
+.reset_button{
+    font-size: 5vmin;
+    font-family: mario_font;
+    color: #24c2b1;
+    background-color: yellow;
+}
+
+
+/*https://github.com/darin-estrin/C1.17_connect/blob/darin/main.js*/
