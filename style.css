@@ -50,19 +50,19 @@ h1 {
 h2 {
     font-size: 5vmin;
 }
-
 .row.zero {
     padding: 0 0 0 3vmin;
     margin: 0 2vmin 0 2vmin;
     width: 80vmin;
     height: 10vmin;
 }
-
-.column {
+.column{
     background-image: url("images/Warp_pipe_edited.png");
+
 }
 
 /* change player text color */
+
 .player h2 {
   color: black;
 }
@@ -71,34 +71,32 @@ h2 {
   color: red !important;
 }
 
+/* Font for Super Mario theme.*/
 @font-face {
     font-family: 'mario_font';
     src: url('images/Fonts/SuperMario256.ttf')
 }
 
-.player img {
+.player img{
     height: 25vmin;
 }
 
-span, h1, h2 {
-    font-family: mario_font, sans-serif;
+span, h1, h2{
+font-family: mario_font;
 }
-
-h1 .red {
+ h1 .red{
     color: red;
 }
-
-h1 .blue{
+ h1 .blue{
      color: blue;
-}
-
-h1 .green{
+ }
+ h1 .green{
      color: green;
-}
-
-h1 .yellow{
+ }
+ h1 .yellow{
      color: yellow;
-}
+ }
+
 
 .player1_token{
   background-image: url('images/mario_8bit1.png');
@@ -107,7 +105,7 @@ h1 .yellow{
 
 .player2_token {
   background-image: url('images/bowser_8bit.png');
-  background-color: #000000;
+  background-color: black;
 }
 
 .reset_button{
@@ -116,3 +114,5 @@ h1 .yellow{
     color: #24c2b1;
     background-color: yellow;
 }
+
+/*https://github.com/darin-estrin/C1.17_connect/blob/darin/main.js*/
