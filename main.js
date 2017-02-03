@@ -40,9 +40,15 @@ function addPlayerCoin() {
     if(currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
       $(column[i]).addClass('player1_token');
       turnOver = true;
+      totalTurns++;
+      var m = document.getElementById('mario_turn');
+      m.play();
     } else if(currentPlayer === 0  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
       $(column[i]).addClass('player2_token');
       turnOver = true;
+      totalTurns++;
+      var b = document.getElementById('bowser_turn');
+      b.play();
     }
   }
   changeActivePlayer(currentPlayer);
@@ -55,26 +61,38 @@ var turnOver = false;
 var player1 = 1;
 var player2 = 0;
 var currentPlayer = player1;
+var totalTurns = 0;
 
 function displayPlayer (){
   if(currentPlayer === 1) {
     // changes players color to red if active and black if waiting
     $('.player1').find('h2').addClass('active_player');
     $('.player2').find('h2').removeClass('active_player');
-    console.log('player1');
-  }else {
+  } else {
     currentPlayer = 0;
     $('.player2').find('h2').addClass('active_player');
     $('.player1').find('h2').removeClass('active_player');
-    console.log('player2');
   }
 }
 
 function changeActivePlayer(player) {
   if (player === 1 ) {
       currentPlayer = 0;
-  }
-  else if (player === 0) {
+  } else if (player === 0) {
       currentPlayer = 1;
   }
+}
+
+function testWin(){
+  var m = document.getElementById('mario_win');
+  var b = document.getElementById('bowser_win');
+  var winner = false;
+  if(totalTurns < 8){
+    return;
+  }
+
+
+  m.play();
+  b.play();
+
 }
