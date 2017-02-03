@@ -11,7 +11,18 @@ var col4 = $('.column_4');
 var col5 = $('.column_5');
 var col6 = $('.column_6');
 var columChosen;
-var gameBoard = [[], [], [], [], []];
+var gameBoard = [
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0],
+  [0,0,0,0,0,0]
+];
+var left = 1;
+var right = 2;
+var down = 3;
+var diagRight = 4;
+var diagLeft = 5;
 
 function initGame() {
   $('#column_1').on('click', addPlayerCoin);
@@ -44,7 +55,7 @@ function addPlayerCoin() {
     columnChosen = 6;
   }
   for (var i = column.length - 1; (!turnOver && i > 0); i--) {
-    if ($(column[1]).hasClass('.player1_token') || $(column[1]).hasClass('player2_token')){
+    if ($(column[1]).hasClass('player1_token') || $(column[1]).hasClass('player2_token')){
       return;
     }
     if (currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
@@ -53,24 +64,24 @@ function addPlayerCoin() {
       totalTurns++;
       var m = document.getElementById('mario_turn');
       m.play();
-      changeActivePlayer(currentPlayer);
-      displayPlayer();
     } else if(currentPlayer === 2  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
       $(column[i]).addClass('player2_token');
       turnOver = true;
       totalTurns++;
       var b = document.getElementById('bowser_turn');
       b.play();
-      changeActivePlayer(currentPlayer);
-      displayPlayer();
     }
   }
-  if (currentPlayer === 2) {
+  if (currentPlayer === 1) {
     gameBoard[i][columnChosen -1] = 1;
   } else {
     gameBoard[i][columnChosen -1] = 2;
   }
-  testWin();
+  changeActivePlayer(currentPlayer);
+  displayPlayer();
+  // console.log(gameBoard[i]);
+  // console.log(gameBoard[i][columnChosen-1]);
+  // testWin(gameBoard[i], gameBoard[i][columnChosen], left, currentPlayer);
 }
 
 
@@ -101,13 +112,15 @@ function changeActivePlayer(player) {
   }
 }
 
-function testWin(player){
-  var m = document.getElementById('mario_win');
-  var b = document.getElementById('bowser_win');
-  var winner = false;
-  if(totalTurns < 8){
-    return;
-  }
-  //m.play();
-  //b.play();
-}
+// function testWin(row, column, direction, player){
+//   var m = document.getElementById('mario_win');
+//   var b = document.getElementById('bowser_win');
+//   var winner = false;
+//   if(totalTurns < 6){
+//     return;
+//   }
+//
+//
+//   //m.play();
+//   //b.play();
+// }
