@@ -37,22 +37,27 @@ function addPlayerCoin() {
     column = col6;
   }
   for (var i = column.length - 1; (!turnOver && i > 0); i--) {
-    if(currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
-      $(column[i]).addClass('player1_token');
-      turnOver = true;
-      totalTurns++;
-      var m = document.getElementById('mario_turn');
-      m.play();
+    if ($(column[1]).hasClass('.player1_token') || $(column[1]).hasClass('player2_token')){
+      return;
+    }
+    if (currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
+        $(column[i]).addClass('player1_token');
+        turnOver = true;
+        totalTurns++;
+        var m = document.getElementById('mario_turn');
+        m.play();
+        changeActivePlayer(currentPlayer);
+        displayPlayer();
     } else if(currentPlayer === 0  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
-      $(column[i]).addClass('player2_token');
-      turnOver = true;
-      totalTurns++;
-      var b = document.getElementById('bowser_turn');
-      b.play();
+    $(column[i]).addClass('player2_token');
+    turnOver = true;
+    totalTurns++;
+    var b = document.getElementById('bowser_turn');
+    b.play();
+    changeActivePlayer(currentPlayer);
+    displayPlayer();
     }
   }
-  changeActivePlayer(currentPlayer);
-  displayPlayer();
   testWin();
 }
 
@@ -93,7 +98,7 @@ function testWin(){
   }
 
 
-  m.play();
-  b.play();
+  //m.play();
+  //b.play();
 
 }
