@@ -1,6 +1,9 @@
 $(document).ready(function(){
     initGame();
     displayPlayer();
+    $('.reset_button').click(function() {
+        reset();
+    })
 });
 
 var gameBoard = [[], [], [], [], [], []];
