@@ -4,7 +4,6 @@ $(document).ready(function(){
   displayPlayer();
 });
 
-var gameBoard = [[], [], [], [], [], []];
 var col1 = $('.column_1');
 var col2 = $('.column_2');
 var col3 = $('.column_3');
@@ -41,17 +40,13 @@ function addPlayerCoin() {
     if(currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
       $(column[i]).addClass('player1_token');
       turnOver = true;
-      console.log(column);
-      changeActivePlayer(currentPlayer);
-      displayPlayer();
     } else if(currentPlayer === 0  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
       $(column[i]).addClass('player2_token');
       turnOver = true;
-      console.log(column);
-      changeActivePlayer(currentPlayer);
-      displayPlayer();
     }
   }
+  changeActivePlayer(currentPlayer);
+  displayPlayer();
 }
 
 
