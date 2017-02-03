@@ -6,24 +6,10 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="genericFirebaseBackend.js" defer></script>
         <script src="main.js" defer></script>
-        <!--
- -        <script src="genericFirebaseBackend.js defer"></script>
- -      -->
-        <!--
-        <script>
-          var connect4Model = new GenericFBModel('Mario_Connect4', boardUpdated);
-          function boardUpdated(data) {
-          console.log(data);
-        }
-        </script>
-        -->
-        <style>
-            @font-face {
-                font-family: 'mario_font';
-                src: url('images/Fonts/SuperMario256.ttf')
-            }
-        </style>
+        
+
     </head>
     <body>
         <section class="container">
@@ -110,6 +96,11 @@
                 </div>
             </div>
         </div>
+
+        <div>
+          <button class="reset_button">Reset</button>
+        </div>
+
         <audio id='mario_turn' src='sounds/smb_coin.wav'></audio>
         <audio id='bowser_turn' src='sounds/smb_bowserfire.wav'></audio>
         <audio id='mario_win' src='sounds/smb_world_clear.wav'></audio>

@@ -2,6 +2,9 @@
 $(document).ready(function(){
   initGame();
   displayPlayer();
+  $('.reset_button').on('click', function(){
+    reset();
+  });
 });
 
 var col1 = $('.column_1');
@@ -77,11 +80,11 @@ function addPlayerCoin() {
   } else {
     gameBoard[i][columnChosen -1] = 2;
   }
+  //testWin(i, columChosen, currentPlayer);
   changeActivePlayer(currentPlayer);
   displayPlayer();
   // console.log(gameBoard[i]);
   // console.log(gameBoard[i][columnChosen-1]);
-  // testWin(gameBoard[i], gameBoard[i][columnChosen], left, currentPlayer);
 }
 
 
@@ -106,21 +109,81 @@ function displayPlayer (){
 
 function changeActivePlayer(player) {
   if (player === 1 ) {
-      currentPlayer = 2;
+    currentPlayer = 2;
   } else if (player === 2) {
-      currentPlayer = 1;
+    currentPlayer = 1;
   }
 }
 
-// function testWin(row, column, direction, player){
-//   var m = document.getElementById('mario_win');
-//   var b = document.getElementById('bowser_win');
-//   var winner = false;
-//   if(totalTurns < 6){
-//     return;
+function playerWon(){
+    if (player1 === win){
+      var playerOneWin =$('<h1>').addClass('player_won').text('You defeated Bowser!');
+    }else{
+      var player2Win =$('<h1>').addClass('player_won').text('You defeated Mario!');
+    }
+}
+function reset(){
+  $('.coin_slot').removeClass('player1_token');
+  $('.coin_slot').removeClass('player2_token');
+  var currentPlayer = player1;
+}
+
+var connect4Model = new GenericFBModel('weshouldeatchips',boardUpdated);
+function boardUpdated(data){
+    console.log("Data", data);
+    teamFourGame = data.game;
+}
+
+
+function firebase() {
+
+}
+
+function initG2() {
+
+    col1 = $('.column_1');
+    col2 = $('.column_2');
+    col3 = $('.column_3');
+    col4 = $('.column_4');
+    col5 = $('.column_5');
+    col6 = $('.column_6');
+    teamFourGame
+}
+
+function saveData(data) {
+    teamFourGame = $('#game_body');
+    connect4Model.saveState({"game": teamFourGame.prop('innerHTML')});
+    console.log("Async sucks");
+}
+
+function replaceOldWithNew() {
+    $('#game_body').empty();
+    $('#game_body').append(teamFourGame);
+    initG2();
+}
+
+
+
+
+// function testWin(){
+//   var matches = 0;
+//   for (var i = gameBoard.length - 1; i > 0; i--){
+//     for (var j = gameBoard[i].length - 1; j > 0; j--){
+//       if (gameBoard[i][j] === currentPlayer){
+//         matches++;
+//         // console.log('matches:', matches);
+//         // console.log(gameBoard[i][j]);
+//       } else {
+//
+//       }
+//     }
+//     matches = 0;
+//     //console.log('matches:', matches);
 //   }
 //
 //
-//   //m.play();
-//   //b.play();
+// //   var m = document.getElementById('mario_win');
+// //   var b = document.getElementById('bowser_win');
+// //   //m.play();
+// //   //b.play();
 // }
