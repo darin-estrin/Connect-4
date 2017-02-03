@@ -26,6 +26,8 @@ var column5 = $(document).find('.column_5');
 var column6 = $(document).find('.column_6');
 var columnChoice;
 
+console.log('c1:', column_1);
+
 // select column to drop in
 
 
