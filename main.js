@@ -53,6 +53,7 @@ function addPlayerCoin() {
   }
   changeActivePlayer(currentPlayer);
   displayPlayer();
+  testWin();
 }
 
 
