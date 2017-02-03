@@ -4,12 +4,19 @@ $(document).ready(function(){
     $('.reset_button').click(function() {
         reset();
     });
-    $('.reset_button').click(function(){
-      initG2();
-    });
+    // $('.reset_button').click(function(){
+    //   initG2();
+    // });
 });
 
-
+var gameBoard = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]
+    ];
 var col1 = $('.column_1');
 var col2 = $('.column_2');
 var col3 = $('.column_3');
@@ -53,11 +60,13 @@ function addPlayerCoin() {
     }
     if (currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
       $(column[i]).addClass('player1_token');
+      //saveData();
       playerTurnOver = true;
       var m = document.getElementById('mario_turn');
       m.play();
     } else if(currentPlayer === 2  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
       $(column[i]).addClass('player2_token');
+      //saveData();
       playerTurnOver = true;
       var b = document.getElementById('bowser_turn');
       b.play();
@@ -70,8 +79,9 @@ function addPlayerCoin() {
   }
   changeActivePlayer(currentPlayer);
   displayPlayer();
-  var testWin = winner(i, columnChosen-1, currentPlayer);
+  //var testWin = testResult(i, columnChosen-1, currentPlayer);
 }
+
 var playerTurnOver = false;
 var player1 = 1;
 var player2 = 2;
@@ -94,6 +104,7 @@ function changeActivePlayer(player) {
   } else if (player === 2) {
       currentPlayer = 1;
   }
+  //replaceOldWithNew();
 }
 function playerWon(){
     if (player1 === win){
@@ -122,29 +133,32 @@ function reset(){
 //   //b.play();
 // }
 
-var connect4Model = new GenericFBModel('weshouldeatchips',boardUpdated);
-function boardUpdated(data){
-    console.log("Data", data);
-    teamFourGame = data.game;
-}
-
-function initG2() {
-    col1 = $('.column_1');
-    col2 = $('.column_2');
-    col3 = $('.column_3');
-    col4 = $('.column_4');
-    col5 = $('.column_5');
-    col6 = $('.column_6');
-}
-
-function saveData(data) {
-    teamFourGame = $('#game_body');
-    connect4Model.saveState({"game": teamFourGame.prop('innerHTML')});
-    console.log("Tada");
-}
-
-function replaceOldWithNew() {
-    $('#game_body').empty();
-    $('#game_body').append(teamFourGame);
-    initG2();
-}
+// var connect4Model = new GenericFBModel('weshouldeatchips',boardUpdated);
+// function boardUpdated(data){
+//     console.log("Data", data);
+//     teamFourGame = data.game;
+// }
+//
+// function initG2() {
+//     col1 = $('.column_1');
+//     col2 = $('.column_2');
+//     col3 = $('.column_3');
+//     col4 = $('.column_4');
+//     col5 = $('.column_5');
+//     col6 = $('.column_6');
+// }
+//
+// function saveData(data) {
+//     // teamFourGame = $('#game_body');
+//     // var updated_table = teamFourGame;
+//     connect4Model.saveState({"game": teamFourGame.prop('innerHTML')});
+//     console.log("Tada");
+// }
+//
+// function replaceOldWithNew() {
+//     $('#game_body').empty();
+//     console.log("TEAM:" ,teamFourGame)
+//     $('#game_body').append(teamFourGame);
+//     // initG2();
+//
+// }
