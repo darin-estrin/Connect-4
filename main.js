@@ -10,12 +10,11 @@ $(document).ready(function(){
 });
 
 var gameBoard = [
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0]
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
     ];
 var col1 = $('.column_1');
 var col2 = $('.column_2');
@@ -77,9 +76,65 @@ function addPlayerCoin() {
   } else {
     gameBoard[i][columnChosen -1] = 2;
   }
+  checkForWin(currentPlayer);
   changeActivePlayer(currentPlayer);
   displayPlayer();
-  //var testWin = testResult(i, columnChosen-1, currentPlayer);
+}
+
+function checkForWin(currentPlayer){
+  var count = 1;
+  for (var i = gameBoard.length -1; i >= 0; i--){
+    for(var j = gameBoard[i].length -1; j >= 0; j--){
+      if(gameBoard[i][j] === currentPlayer && gameBoard[i][j-1] === currentPlayer){
+        count++;
+        if(count === 4){
+          playerWon(currentPlayer);
+        }
+      }
+    }
+  }
+
+  count = 1;
+  for (var i = gameBoard.length -1; i >= 0; i--){
+    for(var j = gameBoard[i].length -1; j >= 0; j--){
+      if(gameBoard[i][j] === currentPlayer && gameBoard[i-1][j] === currentPlayer){
+        count++;
+        if(count === 4){
+          playerWon(currentPlayer);
+        }
+      }
+    }
+  }
+
+  count = 1;
+  for (var i = gameBoard.length -1; i >= 0; i--){
+    for(var j = gameBoard[i].length -1; j >= 0; j--){
+      if(gameBoard[i][j] === currentPlayer && gameBoard[i-1][j+1] === currentPlayer){
+        count++;
+        if(count === 4){
+          playerWon(currentPlayer);
+        }
+      }
+    }
+  }
+
+  count = 1;
+  for (var i = gameBoard.length -1; i >= 0; i--){
+    for(var j = gameBoard[i].length -1; j >= 0; j--){
+      if(gameBoard[i][j] === currentPlayer && gameBoard[i-1][j-1] === currentPlayer){
+        count++;
+        if(count === 4){
+          playerWon(currentPlayer);
+        }
+      }
+    }
+  }
+
+  
+      
+      
+  console.log(currentPlayer)
+  console.log(gameBoard);
 }
 
 var playerTurnOver = false;
@@ -106,11 +161,16 @@ function changeActivePlayer(player) {
   }
   //replaceOldWithNew();
 }
-function playerWon(){
-    if (player1 === win){
-        var playerOneWin =$('<h1>').addClass('player_won').text('You defeated Bowser!');
+function playerWon(currentPlayer){
+    var mario = document.getElementById('mario_win');
+    var bowser = document.getElementById('bowser_win');
+    $('#game_body').html('<h1 class="player_won"></h1>');
+    if (player1 === currentPlayer){
+        $('#game_body').find('h1').text('Congratulations, you beat Bowser');
+        mario.play();
     }else{
-        var player2Win =$('<h1>').addClass('player_won').text('You defeated Mario!');
+        $('#game_body').find('h1').text('Congratulations, you beat Mario');
+        bowser.play();
 
     }
 }
@@ -120,13 +180,7 @@ function reset(){
     var currentPlayer = player1;
 }
 
-// function testWin(row, column, direction, player){
-//   var m = document.getElementById('mario_win');
-//   var b = document.getElementById('bowser_win');
-//   var winner = false;
-//   if(totalTurns < 6){
-//     return;
-//   }
+
 //
 //
 //   //m.play();
