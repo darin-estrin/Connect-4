@@ -204,7 +204,8 @@ function changeActivePlayer(player) {
 function playerWon(currentPlayer) {
   var mario = document.getElementById('mario_win');
   var bowser = document.getElementById('bowser_win');
-  $('#game_body').html('<h1 class="player_won"></h1>');
+  $('.coin_slot').hide();
+  //%$('#game_body').html('<h1 class="player_won"></h1>');
   if (player1 === currentPlayer) {
     $('#game_body')
       .find('h1')
@@ -219,6 +220,8 @@ function playerWon(currentPlayer) {
   }
 }
 function reset() {
+  $('.player_won').hide();
+  $('.coin_slot').show();
   $('.coin_slot').removeClass('player1_token');
   $('.coin_slot').removeClass('player2_token');
   var currentPlayer = player1;
