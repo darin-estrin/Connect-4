@@ -22,7 +22,7 @@ var col3 = $('.column_3');
 var col4 = $('.column_4');
 var col5 = $('.column_5');
 var col6 = $('.column_6');
-var columChosen;
+var columnChosen;
 
 function initGame() {
     $('#column_1').on('click', addPlayerCoin);
@@ -36,25 +36,25 @@ function addPlayerCoin() {
   playerTurnOver = false;
   if ($(this).hasClass('column_1')){
     column = col1;
-    columnChosen = 1;
+    columnChosen = 0;
   } else if ($(this).hasClass('column_2')){
     column = col2;
-    columnChosen = 2;
+    columnChosen = 1;
   }else if($(this).hasClass('column_3')){
     column = col3;
-    columnChosen = 3;
+    columnChosen = 2;
   }else if ($(this).hasClass('column_4')){
     column = col4;
-    columnChosen = 4;
+    columnChosen = 3;
   }else if ($(this).hasClass('column_5')){
     column = col5;
-    columnChosen = 5;
+    columnChosen = 4;
   } else {
     column = col6;
-    columnChosen = 6;
+    columnChosen = 5;
   }
   for (var i = column.length - 1; (!playerTurnOver && i > 0); i--) {
-    if ($(column[1]).hasClass('player1_token') || $(column[1]).hasClass('player2_token')){
+    if ($(column[0]).hasClass('player1_token') || $(column[0]).hasClass('player2_token')){
       return;
     }
     if (currentPlayer === 1  && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')){
@@ -71,71 +71,96 @@ function addPlayerCoin() {
       b.play();
     }
   }
+  var row = gameBoard.indexOf(gameBoard[i]);
   if (currentPlayer === 1) {
-    gameBoard[i][columnChosen -1] = 1;
+    gameBoard[i][columnChosen] = 1;
   } else {
-    gameBoard[i][columnChosen -1] = 2;
+    gameBoard[i][columnChosen] = 2;
   }
-  checkForWin(currentPlayer);
+  checkForWin(currentPlayer, row, columnChosen);
   changeActivePlayer(currentPlayer);
   displayPlayer();
 }
 
-function checkForWin(currentPlayer){
+function checkForWin(currentPlayer, row, column){
+  console.log(row, column, currentPlayer)
+  // check for horizontal left win
   var count = 1;
-  for (var i = gameBoard.length -1; i >= 0; i--){
-    for(var j = gameBoard[i].length -1; j >= 0; j--){
-      if(gameBoard[i][j] === currentPlayer && gameBoard[i][j-1] === currentPlayer){
-        count++;
-        if(count === 4){
-          playerWon(currentPlayer);
-        }
-      }
+  while(gameBoard[row][column-1] === currentPlayer && column - 1 >= 0){
+    count++;
+    column--;
+    if(count === 4){
+      playerWon(currentPlayer);
     }
   }
 
+  // check horizont right win
   count = 1;
-  for (var i = gameBoard.length -1; i >= 0; i--){
-    for(var j = gameBoard[i].length -1; j >= 0; j--){
-      if(gameBoard[i][j] === currentPlayer && gameBoard[i-1][j] === currentPlayer){
-        count++;
-        if(count === 4){
-          playerWon(currentPlayer);
-        }
-      }
+  while(gameBoard[row][column+1] === currentPlayer && column + 1 <= 5){
+    count++;
+    column--;
+    if(count === 4){
+      playerWon(currentPlayer);
     }
   }
-
   count = 1;
-  for (var i = gameBoard.length -1; i >= 0; i--){
-    for(var j = gameBoard[i].length -1; j >= 0; j--){
-      if(gameBoard[i][j] === currentPlayer && gameBoard[i-1][j+1] === currentPlayer){
-        count++;
-        if(count === 4){
-          playerWon(currentPlayer);
-        }
-      }
+
+  // check vertical win
+  while((row + 1) < 5 && currentPlayer === gameBoard[row+1][column]){
+    count++;
+    row++;
+    if(count === 4){
+      playerWon(currentPlayer);
     }
   }
-
   count = 1;
-  for (var i = gameBoard.length -1; i >= 0; i--){
-    for(var j = gameBoard[i].length -1; j >= 0; j--){
-      if(gameBoard[i][j] === currentPlayer && gameBoard[i-1][j-1] === currentPlayer){
-        count++;
-        if(count === 4){
-          playerWon(currentPlayer);
-        }
-      }
+
+  // check diagonal-down left win
+  while((row + 1) < 5 && (column -1) >= 0 && currentPlayer === gameBoard[row+1][column-1]){
+    count++;
+    row++;
+    column--;
+    if(count === 4){
+      playerWon(currentPlayer);
     }
   }
+  count = 1;
 
+  // check diagonal-down right win
+  while((row + 1) < 5 && (column + 1) <= 5 && currentPlayer === gameBoard[row+1][column+1]){
+    count++;
+    row++;
+    column++;
+    if(count === 4){
+      playerWon(currentPlayer);
+    }
+  }
+  count = 1;
+
+  // check diagonal-up left win
+  while((row - 1) >= 0 && (column -1) >= 0 && currentPlayer === gameBoard[row-1][column-1]){
+    count++;
+    row--;
+    column--;
+    if(count === 4){
+      playerWon(currentPlayer);
+    }
+  }
+  count = 1;
+
+  // check diagonal-up right win
+  while((row - 1) >= 0 && (column + 1) <= 5 && currentPlayer === gameBoard[row-1][column+1]){
+    count++;
+    row--;
+    column++;
+    if(count === 4){
+      playerWon(currentPlayer);
+    }
+  }
   
-      
-      
-  console.log(currentPlayer)
-  console.log(gameBoard);
 }
+
+
 
 var playerTurnOver = false;
 var player1 = 1;
