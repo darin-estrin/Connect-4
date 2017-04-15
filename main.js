@@ -207,13 +207,13 @@ function playerWon(currentPlayer) {
   $('.coin_slot').hide();
   //%$('#game_body').html('<h1 class="player_won"></h1>');
   if (player1 === currentPlayer) {
-    $('#game_body')
-      .find('h1')
+    $('.player_won')
+      .show()
       .text('Congratulations, you beat Bowser');
     mario.play();
   } else {
-    $('#game_body')
-      .find('h1')
+    $('.player_won')
+      .show()
       .text('Congratulations, you beat Mario');
     bowser.play();
 
@@ -224,7 +224,16 @@ function reset() {
   $('.coin_slot').show();
   $('.coin_slot').removeClass('player1_token');
   $('.coin_slot').removeClass('player2_token');
-  var currentPlayer = player1;
+  currentPlayer = 2;
+  changeActivePlayer(currentPlayer);
+  displayPlayer();
+  gameBoard = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0]
+    ];
 }
 
 //
