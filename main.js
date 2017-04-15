@@ -55,7 +55,7 @@ function addPlayerCoin() {
   }
 
   for (var i = column.length - 1; (!playerTurnOver && i > 0); i--) {
-    if ($(column[0]).hasClass('player1_token') || $(column[0]).hasClass('player2_token')) {
+    if ($(column[1]).hasClass('player1_token') || $(column[1]).hasClass('player2_token')) {
       return;
     }
     if (currentPlayer === 1 && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
@@ -85,7 +85,6 @@ function addPlayerCoin() {
 }
 
 function checkForWin(currentPlayer, row, column) {
-  console.log(row, column, currentPlayer)
   // check for horizontal left win
   var count = 1;
   var prevCount = count;
