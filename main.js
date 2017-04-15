@@ -151,7 +151,7 @@ function checkForWin(currentPlayer, row, column) {
     column--;
     if (count === 4) {
       playerWon(currentPlayer);
-    } else if(prevCount === count){
+    } else if (prevCount === count) {
       break;
     }
   }
@@ -224,39 +224,22 @@ function reset() {
   var currentPlayer = player1;
 }
 
-
 //
 //
-//   //m.play();
-//   //b.play();
-// }
-
-// var connect4Model = new GenericFBModel('weshouldeatchips',boardUpdated);
-// function boardUpdated(data){
-//     console.log("Data", data);
-//     teamFourGame = data.game;
-// }
+//   //m.play();   //b.play(); } var connect4Model = new
+// GenericFBModel('weshouldeatchips',boardUpdated); function boardUpdated(data){
+//     console.log("Data", data);     teamFourGame = data.game; }
 //
-// function initG2() {
-//     col1 = $('.column_1');
-//     col2 = $('.column_2');
-//     col3 = $('.column_3');
-//     col4 = $('.column_4');
-//     col5 = $('.column_5');
-//     col6 = $('.column_6');
-// }
+// function initG2() {     col1 = $('.column_1');     col2 = $('.column_2');
+// col3 = $('.column_3');     col4 = $('.column_4');     col5 = $('.column_5');
+//    col6 = $('.column_6'); }
 //
-// function saveData(data) {
-//     // teamFourGame = $('#game_body');
-//     // var updated_table = teamFourGame;
-//     connect4Model.saveState({"game": teamFourGame.prop('innerHTML')});
-//     console.log("Tada");
-// }
+// function saveData(data) {     // teamFourGame = $('#game_body');     // var
+// updated_table = teamFourGame;     connect4Model.saveState({"game":
+// teamFourGame.prop('innerHTML')});     console.log("Tada"); }
 //
-// function replaceOldWithNew() {
-//     $('#game_body').empty();
-//     console.log("TEAM:" ,teamFourGame)
-//     $('#game_body').append(teamFourGame);
-//     // initG2();
+// function replaceOldWithNew() {     $('#game_body').empty();
+// console.log("TEAM:" ,teamFourGame)     $('#game_body').append(teamFourGame);
+//    // initG2();
 //
 // }
