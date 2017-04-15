@@ -118,6 +118,7 @@ function checkForWin(currentPlayer, row, column) {
     }
   }
   count = 1;
+  prevCount = count;
 
   // check diagonal-down left win
   while ((row + 1) < 5 && (column - 1) >= 0 && currentPlayer === gameBoard[row + 1][column - 1]) {
@@ -126,28 +127,8 @@ function checkForWin(currentPlayer, row, column) {
     column--;
     if (count === 4) {
       playerWon(currentPlayer);
-    }
-  }
-  count = 1;
-
-  // check diagonal-down right win
-  while ((row + 1) < 5 && (column + 1) <= 5 && currentPlayer === gameBoard[row + 1][column + 1]) {
-    count++;
-    row++;
-    column++;
-    if (count === 4) {
-      playerWon(currentPlayer);
-    }
-  }
-  count = 1;
-
-  // check diagonal-up left win
-  while ((row - 1) >= 0 && (column - 1) >= 0 && currentPlayer === gameBoard[row - 1][column - 1]) {
-    count++;
-    row--;
-    column--;
-    if (count === 4) {
-      playerWon(currentPlayer);
+    } else if (count === prevCount) {
+      break;
     }
   }
   count = 1;
@@ -156,6 +137,31 @@ function checkForWin(currentPlayer, row, column) {
   while ((row - 1) >= 0 && (column + 1) <= 5 && currentPlayer === gameBoard[row - 1][column + 1]) {
     count++;
     row--;
+    column++;
+    if (count === 4) {
+      playerWon(currentPlayer);
+    }
+  }
+  count = 1;
+  prevCount = count;
+
+  // check diagonal-up left win
+  while ((row - 1) >= 0 && (column - 1) >= 0 && currentPlayer === gameBoard[row - 1][column - 1]) {
+    count++;
+    row--;
+    column--;
+    if (count === 4) {
+      playerWon(currentPlayer);
+    } else if(prevCount === count){
+      break;
+    }
+  }
+  count = 1;
+
+  // check diagonal-down right win
+  while ((row + 1) < 5 && (column + 1) <= 5 && currentPlayer === gameBoard[row + 1][column + 1]) {
+    count++;
+    row++;
     column++;
     if (count === 4) {
       playerWon(currentPlayer);
