@@ -88,11 +88,14 @@ function checkForWin(currentPlayer, row, column) {
   console.log(row, column, currentPlayer)
   // check for horizontal left win
   var count = 1;
+  var prevCount = count;
   while (gameBoard[row][column - 1] === currentPlayer && column - 1 >= 0) {
     count++;
     column--;
     if (count === 4) {
       playerWon(currentPlayer);
+    } else if (count === prevCount) {
+      break;
     }
   }
   count = 1;
