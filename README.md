@@ -6,7 +6,11 @@
 
 ## Technologies Used
 
-> HTML, CCS, JavaScript, jQuery
+- HTML
+- CSS
+- Bootstrap
+- JavaScript
+- jQuery
 
 ## Developers
 
