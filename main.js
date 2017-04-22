@@ -220,6 +220,8 @@ function playerWon(currentPlayer) {
   }
 }
 function reset() {
+  var mario = document.getElementById('mario_win');
+  var bowser = document.getElementById('bowser_win');
   $('.player_won').hide();
   $('.coin_slot').show();
   $('.coin_slot').removeClass('player1_token');
@@ -234,6 +236,10 @@ function reset() {
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0]
     ];
+    mario.pause();
+    mario.currentTime = 0;
+    bowser.pause();
+    bowser.currentTime = 0;
 }
 
 //
