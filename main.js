@@ -209,12 +209,12 @@ function playerWon(currentPlayer) {
   if (player1 === currentPlayer) {
     $('.player_won')
       .show()
-      .text('Congratulations, you beat Bowser');
+      .text('Player 1 won');
     mario.play();
   } else {
     $('.player_won')
       .show()
-      .text('Congratulations, you beat Mario');
+      .text('Player 2 won');
     bowser.play();
 
   }
