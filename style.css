@@ -22,6 +22,11 @@ body > * {
     width: 80vmin;
 }
 
+.coin_drop {
+    padding:0 0 0 3vmin ;
+    margin: 0;
+}
+
 .coin_slot {
     display: inline-block;
     background-image: url("images/question_mark_cropped.png");
@@ -118,5 +123,25 @@ font-family: mario_font;
 
 .player_won{
     font-size: 7vmin;
+}
+
+#column_1:hover, #column_2:hover, #column_3:hover, #column_4:hover, #column_5:hover, #column_6:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1199px) {
+    #game_body {
+        background: none !important;
+        padding: 2vmin 0 2vmin 4vmin;
+        margin: 2vmin 3vmin 2vmin 3vmin;
+        height: 70vmin;
+        width: 100%;
+    }
+
+    .zero, .first, .second, .third, .fourth, .fifth  {
+        display: block;
+        margin: 0 auto;
+        width: 100% !important;
+    }
 }
 /*https://github.com/darin-estrin/C1.17_connect/blob/darin/main.js*/
