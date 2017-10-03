@@ -85,33 +85,48 @@
     </div><!-- End of Game Area -->
 
     <!-- Player info -->
-    <div class="container col-xs-12 col-lg-5 player_icons">
+    <div class="container col-lg-5 player_icons visible-lg-block">
         <div class='row'>
-            <div class='col-xs-offset-4 col-xs-4'>
+            <div class='col-lg-offset-4 col-lg-4'>
                 <button class="reset_button">Reset</button>
             </div>
         </div>
         <div class="row player1">
-            <div class="player col-xs-offset-4 col-xs-4">
+            <div class="player col-lg-offset-4 col-lg-4">
                 <h2>Player1</h2>
             </div>
         </div>
         <div class="row">
-            <div class="player col-xs-offset-4 col-xs-4">
+            <div class="player col-lg-offset-4 col-lg-4">
                 <img src="images/Ph03nyx-Super-Mario-Paper-Mario%20(1).ico">
             </div>
         </div>
         <div class="row player2">
-            <div class="player col-xs-offset-4 col-xs-4">
+            <div class="player col-lg-offset-4 col-lg-4">
                 <h2>Player2</h2>
             </div>
         </div>
         <div class="row">
-            <div class="player col-xs-offset-4 col-xs-4">
+            <div class="player col-lg-offset-4 col-lg-4">
                 <img src="images/Ph03nyx-Super-Mario-Paper-Bowser.ico">
             </div>
         </div>
-    </div> <!-- End of player info -->
+    </div>
+    <div class="container hidden-lg">
+        <div class='row'>
+            <div class='col-xs-offset-1 col-xs-5 player player1'>
+                <h2>Player 1</h2>
+                <img src="images/Ph03nyx-Super-Mario-Paper-Mario%20(1).ico">
+            </div>
+            <div class='col-xs-offset-1 col-xs-5 player player2'>
+                <h2>Player 2</h2>
+                <img src="images/Ph03nyx-Super-Mario-Paper-Bowser.ico">
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn-block reset_button">Reset</button>
+        </div>
+    </div><!-- End of player info -->
 
     <audio id='mario_turn' src='sounds/smb_coin.wav'></audio>
     <audio id='bowser_turn' src='sounds/smb_bowserfire.wav'></audio>
