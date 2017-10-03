@@ -12,6 +12,7 @@ body {
 
 .title {
     height: 100px;
+    margin-bottom: 25px;
 }
 
 body > * {
@@ -140,7 +141,7 @@ font-family: mario_font;
     cursor: pointer;
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 767px) {
     #game_body {
         background: none !important;
         padding: 2vmin 0 2vmin 4vmin;
