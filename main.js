@@ -5,7 +5,6 @@ $(document)
     $('.reset_button').click(function () {
       reset();
     });
-    // $('.reset_button').click(function(){   initG2(); });
   });
 
 var gameBoard = [
@@ -22,6 +21,7 @@ var col4 = $('.column_4');
 var col5 = $('.column_5');
 var col6 = $('.column_6');
 var columnChosen;
+var counter = 0;
 
 function initGame() {
   $('#column_1').on('click', addPlayerCoin);
@@ -166,6 +166,10 @@ function checkForWin(currentPlayer, row, column) {
       playerWon(currentPlayer);
     }
   }
+  counter++;
+  if (counter === 30) {
+    displayDraw();
+  }
 
 }
 
@@ -199,31 +203,32 @@ function changeActivePlayer(player) {
   } else if (player === 2) {
     currentPlayer = 1;
   }
-  //replaceOldWithNew();
 }
 function playerWon(currentPlayer) {
   var mario = document.getElementById('mario_win');
   var bowser = document.getElementById('bowser_win');
-  $('.coin_slot').hide();
-  //%$('#game_body').html('<h1 class="player_won"></h1>');
+  $('.coin_drop').hide();
   if (player1 === currentPlayer) {
     $('.player_won')
       .show()
-      .text('Player 1 won');
+      .text('Player 1 won')
+      .append("<img src='images/Ph03nyx-Super-Mario-Paper-Mario (1).ico'>");
     mario.play();
   } else {
     $('.player_won')
       .show()
-      .text('Player 2 won');
+      .text('Player 2 won').
+      append("<img src='images/Ph03nyx-Super-Mario-Paper-Bowser.ico'>");
     bowser.play();
 
   }
 }
 function reset() {
+  counter = 0;
   var mario = document.getElementById('mario_win');
   var bowser = document.getElementById('bowser_win');
   $('.player_won').hide();
-  $('.coin_slot').show();
+  $('.coin_drop').show();
   $('.coin_slot').removeClass('player1_token');
   $('.coin_slot').removeClass('player2_token');
   currentPlayer = 2;
@@ -240,4 +245,10 @@ function reset() {
     mario.currentTime = 0;
     bowser.pause();
     bowser.currentTime = 0;
+}
+
+function displayDraw() {
+  $('.coin_drop').hide();
+  $('.player_won').show()
+    .text('Draw');
 }

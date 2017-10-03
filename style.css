@@ -10,6 +10,10 @@ body {
     min-width: 320px;
 }
 
+.title {
+    height: 100px;
+}
+
 body > * {
     font-size: 1rem;
 }
@@ -45,7 +49,7 @@ body > * {
     height: 20vmin;
 }
 
-h1, h2 {
+h1, h2, h3 {
     color: rgba(255, 53, 52, 1);
 }
 
@@ -87,7 +91,7 @@ h2 {
     height: 20vmin;
 }
 
-span, h1, h2{
+span, h1, h2, h3{
 font-family: mario_font;
 }
  h1 .red{
@@ -121,8 +125,15 @@ font-family: mario_font;
     background-color: yellow;
 }
 
-.player_won{
-    font-size: 7vmin;
+.player_won {
+    font-size: 5vmin;
+    width: 100%;
+}
+
+.player_won img {
+    height: 70px;
+    width: auto;
+    padding-left: 20px;
 }
 
 #column_1:hover, #column_2:hover, #column_3:hover, #column_4:hover, #column_5:hover, #column_6:hover {
