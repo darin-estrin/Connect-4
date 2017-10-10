@@ -53,6 +53,11 @@ function addPlayerCoin() {
     column = col6;
     columnChosen = 5;
   }
+  if (currentPlayer === 1) {
+    $(this).css('box-shadow', '7px 7px 12px red');
+  } else {
+    $(this).css('box-shadow', '7px 7px 12px blue');
+  }
 
   for (var i = column.length - 1; (!playerTurnOver && i > 0); i--) {
     if ($(column[1]).hasClass('player1_token') || $(column[1]).hasClass('player2_token')) {
@@ -183,18 +188,18 @@ function displayPlayer() {
     // changes players color to red if active and black if waiting
     $('.player1')
       .find('h2')
-      .addClass('active_player');
+      .css('color', 'blue');
     $('.player2')
       .find('h2')
-      .removeClass('active_player');
+      .css('color', 'black');
   } else {
     currentPlayer = 2;
     $('.player2')
       .find('h2')
-      .addClass('active_player');
+      .css('color', 'red');
     $('.player1')
       .find('h2')
-      .removeClass('active_player');
+      .css('color', 'black');
   }
 }
 function changeActivePlayer(player) {
@@ -252,3 +257,15 @@ function displayDraw() {
   $('.player_won').show()
     .text('Draw');
 }
+
+$('.column').on('mouseover', function() {
+  if (currentPlayer === 1) {
+    $(this).css('box-shadow', '7px 7px 12px blue');
+  } else {
+    $(this).css('box-shadow', '7px 7px 12px red');
+  }
+})
+
+$('.column').on('mouseleave', function() {
+  $(this).css('box-shadow', '7px 7px 5px #888888');
+})

@@ -78,10 +78,6 @@ h2 {
   color: black;
 }
 
-.active_player {
-  color: red !important;
-}
-
 /* Font for Super Mario theme.*/
 @font-face {
     font-family: 'mario_font';
