@@ -8,7 +8,7 @@
 
 - HTML
 - CSS
-- Bootstrap
+- Flexbox
 - JavaScript
 - jQuery
 
