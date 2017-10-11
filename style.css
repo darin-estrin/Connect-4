@@ -1,75 +1,105 @@
+/* Font for Super Mario theme. */
+@font-face {
+  font-family: 'mario_font';
+  src: url('images/Fonts/SuperMario256.ttf')
+}
+
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    font-size: 0;
-    background: url(images/background_1.png) no-repeat center center;
-    background-size: cover;
-    min-width: 320px;
-}
-
-.title {
-    height: 100px;
-    margin-bottom: 25px;
+  font-size: 0;
+  background: url(images/background_1.png) no-repeat center center;
+  background-size: cover;
+  min-width: 320px;
+  height: 100vh;
 }
 
 body > * {
-    font-size: 1rem;
-}
-
-#game_body {
-    background-color: rgba(255, 224, 32, 0.8);
-    padding: 2vmin 0 2vmin 4vmin;
-    margin: 2vmin 0 2vmin 3vmin;
-    height: 70vmin;
-    width: 80vmin;
-}
-
-.coin_drop {
-    padding:0 0 0 3vmin ;
-    margin: 0;
-}
-
-.coin_slot {
-    display: inline-block;
-    background-image: url("images/question_mark_cropped.png");
-    background-size: 105%;
-    height: 90%;
-    width: 13%;
-    margin: 0 1vmin;
-    box-shadow: 7px 7px 5px #888888;
-}
-
-.row {
-    height: 19%;
-}
-
-.row.header {
-    height: 20vmin;
+ font-size: 1rem;
 }
 
 h1, h2, h3 {
-    color: rgba(255, 53, 52, 1);
+  color: rgba(255, 53, 52, 1);
 }
 
 h1 {
-    font-size: 8vmin;
+  font-size: 8vmin;
 }
 
 h2 {
-    font-size: 5vmin;
+  font-size: 5vmin;
 }
-.row.zero {
-    padding: 0 0 0 3vmin;
-    margin: 0 2vmin 0 2vmin;
-    width: 80vmin;
-    height: 10vmin;
-}
-.column{
-    background-image: url("images/Warp_pipe_edited.png");
 
+.title {
+  display: flex;
+  height: 10vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+   display: flex;
+   margin: 10px;
+   height: calc(90vh - 20px);
+}
+
+.game_area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.win_message {
+  align-self: center;
+}
+
+.player_large {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#game_body {
+  background-color: rgba(255, 224, 32, 0.8);
+  flex: 1;
+  padding: 2% 3%;
+}
+
+.coin_drop {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 3%;
+}
+
+.coin_drop img {
+  height: 100%;
+  width: auto;
+  box-shadow: 7px 7px 5px #888888;
+}
+
+.zero {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.game_board {
+  flex: 6;
+}
+
+.coin_slot img {
+  box-shadow: 7px 7px 5px #888888;
+}
+
+.row {
+  width: 100;
+  display: flex;
+  justify-content: space-around;
 }
 
 /* change player text color */
@@ -78,82 +108,140 @@ h2 {
   color: black;
 }
 
-/* Font for Super Mario theme.*/
-@font-face {
-    font-family: 'mario_font';
-    src: url('images/Fonts/SuperMario256.ttf')
-}
-
 .player img{
-    height: 20vmin;
+  height: 20vmin;
 }
 
-span, h1, h2, h3{
-font-family: mario_font;
+span, h1, h2, h3 {
+  font-family: mario_font;
 }
  h1 .red{
-    color: red;
-}
- h1 .blue{
-     color: blue;
- }
- h1 .green{
-     color: green;
- }
- h1 .yellow{
-     color: yellow;
- }
-
-
-.player1_token{
-  background-image: url('images/mario_8bit1.png');
-  background-color: #6ce6fb;
+  color: red;
 }
 
-.player2_token {
-  background-image: url('images/bowser_8bit.png');
-  background-color: black;
+h1 .blue{
+  color: blue;
+}
+h1 .green{
+  color: green;
+}
+h1 .yellow{
+  color: yellow;
 }
 
 .reset_button{
-    font-size: 5vmin;
-    font-family: mario_font;
-    color: #24c2b1;
-    background-color: yellow;
+  font-size: 5vmin;
+  font-family: mario_font;
+  color: #24c2b1;
+  background-color: yellow;
+}
+
+.reset_button:hover {
+  cursor: pointer;
 }
 
 .player_won {
-    font-size: 5vmin;
-    width: 100%;
+  font-size: 5vmin;
+  width: 100%;
 }
 
 .player_won img {
-    height: 70px;
-    width: auto;
-    padding-left: 20px;
+  height: 70px;
+  width: auto;
+  padding-left: 20px;
 }
 
 #column_1:hover, #column_2:hover, #column_3:hover, #column_4:hover, #column_5:hover, #column_6:hover {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.player_small {
+  display: none;
 }
 
 .reset_button_large {
-    margin-top: 15px;
-    margin-bottom: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-@media screen and (max-width: 767px) {
-    #game_body {
-        background: none !important;
-        padding: 2vmin 0 2vmin 4vmin;
-        margin: 2vmin 3vmin 2vmin 3vmin;
-        height: 70vmin;
-        width: 100%;
-    }
+@media screen and (max-width: 1300px) {
 
-    .zero, .first, .second, .third, .fourth, .fifth  {
-        display: block;
-        margin: 0 auto;
-        width: 100% !important;
-    }
+  .game_area {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .player_large {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+@media screen and (max-width: 920px), screen and (max-height: 750px) {
+  
+  .player_large {
+    display: none;
+  }
+
+  .coin_drop {
+    height: 9vmin;
+  }
+
+  .player_won img {
+    height: 5vh;
+    width: auto;
+    padding-left: 20px;
+  }
+
+  .coin_drop img {
+    height: 8vmin;
+  }
+
+  .coin_slot img {
+    height: 8vmin;
+  }
+
+  .game_board {
+    height: 60vh;
+  }
+
+  .player_small {
+    display: inline-block;
+    width: 100%;
+  }
+
+  .player_small > div {
+    display: flex;
+    height: auto;
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .player {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .player img {
+    height: 5vh;
+    width: 5vh;
+    align-self: center;
+  }
+
+  .game_area {
+    height: 60vmin;
+  }
+
+  .wrapper {
+    height: 65vh;
+    align-items: center;
+  }
+
+  .reset_button {
+    width: 90vw;
+  }
 }

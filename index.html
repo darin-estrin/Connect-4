@@ -2,136 +2,136 @@
 <html>
 
 <head>
-    <title>Connect 4</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="main.js" defer></script>
-
+  <title>Connect 4</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="main.js" defer></script>
 </head>
 
 <body>
-    <!-- Header -->
-    <section class="container title">
-        <div class="row header">
-            <div class="col-xs-12">
-                <h1 class='text-center'><span class="red">C</span><span class="blue">o</span><span class="green">n</span><span class="blue">n</span><span class="yellow">e</span><span class="green">c</span><span class="red">t</span> <span class="green">M</span><span class="blue">a</span><span class="yellow">r</span><span class="red">i</span><span class="green">o</span>
-                </h1>
-            </div>
-        </div>
-    </section> <!-- End Header -->
+  <!-- Header -->
+  <section class="title">
+    <h1>
+      <span class="red">C</span><span class="blue">o</span><span class="green">n</span><span class="blue">n</span><span class="yellow">e</span><span class="green">c</span><span class="red">t</span> <span class="green">M</span><span class="blue">a</span><span class="yellow">r</span><span class="red">i</span><span class="green">o</span>
+    </h1>
+  </section><!-- End Header -->
 
+  <!--Wrapper -->
+  <div class='wrapper'>
     <!-- Game Area -->
-    <div class='col-lg-offset-0 col-lg-7 col-md-offset-2 col-md-8 col-sm-offset-1 col-sm-9 col-xs-12 game_area container'>
-        <div class='row'>
-            <h3 class='player_won text-center'></h3>
+    <div class='game_area'>
+      <div class='win_message'>
+        <h3 class='player_won'></h3>
+      </div>
+      <div class='coin_drop'>
+        <div class="zero">
+          <div id='column_1' class="column_1 column"><img src="images/warp_pipe.png"></div>
+          <div id='column_2' class="column_2 column"><img src="images/warp_pipe.png"></div>
+          <div id='column_3' class="column_3 column"><img src="images/warp_pipe.png"></div>
+          <div id='column_4' class="column_4 column"><img src="images/warp_pipe.png"></div>
+          <div id='column_5' class="column_5 column"><img src="images/warp_pipe.png"></div>
+          <div id='column_6' class="column_6 column"><img src="images/warp_pipe.png"></div>
         </div>
-        <div class='coin_drop col-xs-12 col-lg-7'>
-            <section>
-                <div class="row zero col-xs-6">
-                    <div id='column_1' class="column coin_slot column_1 col-xs-1"></div>
-                    <div id='column_2' class="column coin_slot column_2 col-xs-1"></div>
-                    <div id='column_3' class="column coin_slot column_3 col-xs-1"></div>
-                    <div id='column_4' class="column coin_slot column_4 col-xs-1"></div>
-                    <div id='column_5' class="column coin_slot column_5 col-xs-1"></div>
-                    <div id='column_6' class="column coin_slot column_6 col-xs-1"></div>
-                </div>
-            </section>
-        </div>
-        <div class='game_board col-xs-12 col-lg-7'>     
-            <section id="game_body">
-                <div class="row first">
-                    <div class="coin_slot column_1 col-xs-1"></div>
-                    <div class="coin_slot column_2 col-xs-1"></div>
-                    <div class="coin_slot column_3 col-xs-1"></div>
-                    <div class="coin_slot column_4 col-xs-1"></div>
-                    <div class="coin_slot column_5 col-xs-1"></div>
-                    <div class="coin_slot column_6 col-xs-1"></div>
-                </div>
-                <div class="row second">
-                    <div class="coin_slot column_1 col-xs-1"></div>
-                    <div class="coin_slot column_2 col-xs-1"></div>
-                    <div class="coin_slot column_3 col-xs-1"></div>
-                    <div class="coin_slot column_4 col-xs-1"></div>
-                    <div class="coin_slot column_5 col-xs-1"></div>
-                    <div class="coin_slot column_6 col-xs-1"></div>
-                </div>
-                <div class="row third">
-                    <div class="coin_slot column_1 col-xs-1"></div>
-                    <div class="coin_slot column_2 col-xs-1"></div>
-                    <div class="coin_slot column_3 col-xs-1"></div>
-                    <div class="coin_slot column_4 col-xs-1"></div>
-                    <div class="coin_slot column_5 col-xs-1"></div>
-                    <div class="coin_slot column_6 col-xs-1"></div>
-                </div>
-                <div class="row fourth">
-                    <div class="coin_slot column_1 col-xs-1"></div>
-                    <div class="coin_slot column_2 col-xs-1"></div>
-                    <div class="coin_slot column_3 col-xs-1"></div>
-                    <div class="coin_slot column_4 col-xs-1"></div>
-                    <div class="coin_slot column_5 col-xs-1"></div>
-                    <div class="coin_slot column_6 col-xs-1"></div>
-                </div>
-                <div class="row fifth">
-                    <div class="coin_slot column_1 col-xs-1"></div>
-                    <div class="coin_slot column_2 col-xs-1"></div>
-                    <div class="coin_slot column_3 col-xs-1"></div>
-                    <div class="coin_slot column_4 col-xs-1"></div>
-                    <div class="coin_slot column_5 col-xs-1"></div>
-                    <div class="coin_slot column_6 col-xs-1"></div>
-                </div>
-            </section>
-        </div> 
-    </div><!-- End of Game Area -->
+      </div>
+      <div class='game_board'>
+        <section id="game_body">
+          <div class="row first">
+            <div class="coin_slot column_1"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_2"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_3"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_4"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_5"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_6"><img src="images/question_mark.png"></div>
+          </div>
+          <div class="row second">
+            <div class="coin_slot column_1"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_2"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_3"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_4"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_5"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_6"><img src="images/question_mark.png"></div>
+          </div>
+          <div class="row third">
+            <div class="coin_slot column_1"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_2"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_3"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_4"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_5"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_6"><img src="images/question_mark.png"></div>
+          </div>
+          <div class="row fourth">
+            <div class="coin_slot column_1"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_2"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_3"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_4"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_5"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_6"><img src="images/question_mark.png"></div>
+          </div>
+          <div class="row fifth">
+            <div class="coin_slot column_1"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_2"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_3"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_4"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_5"><img src="images/question_mark.png"></div>
+            <div class="coin_slot column_6"><img src="images/question_mark.png"></div>
+          </div>
+        </section>
+      </div><!-- End of Game Board -->
+    </div><!-- End of Game Area -->   
 
     <!-- Player info -->
-    <div class="container col-lg-5 player_icons visible-lg-block">
-        <div class='row'>
-            <div class='col-lg-offset-4 col-lg-4'>
-                <button class="reset_button">Reset</button>
-            </div>
+    <div class="player_icons player_large">
+      <div>
+        <div>
+          <button class="reset_button">Reset</button>
         </div>
-        <div class="row player1">
-            <div class="player col-lg-offset-4 col-lg-4">
-                <h2>Player1</h2>
-            </div>
+      </div>
+      <div class="player1">
+        <div class="player">
+          <h2>Player1</h2>
         </div>
-        <div class="row">
-            <div class="player col-lg-offset-4 col-lg-4">
-                <img src="images/Ph03nyx-Super-Mario-Paper-Mario%20(1).ico">
-            </div>
+      </div>
+      <div>
+        <div class="player">
+          <img src="images/Ph03nyx-Super-Mario-Paper-Mario%20(1).ico">
         </div>
-        <div class="row player2">
-            <div class="player col-lg-offset-4 col-lg-4">
-                <h2>Player2</h2>
-            </div>
+      </div>
+      <div class="player2">
+        <div class="player">
+          <h2>Player2</h2>
         </div>
-        <div class="row">
-            <div class="player col-lg-offset-4 col-lg-4">
-                <img src="images/Ph03nyx-Super-Mario-Paper-Bowser.ico">
-            </div>
+      </div>
+      <div>
+        <div class="player">
+          <img src="images/Ph03nyx-Super-Mario-Paper-Bowser.ico">
         </div>
+      </div>
     </div>
-    <div class="container hidden-lg">
-        <div class='row'>
-            <div class='col-xs-offset-1 col-xs-5 player player1'>
-                <h2>Player 1</h2>
-                <img src="images/Ph03nyx-Super-Mario-Paper-Mario%20(1).ico">
-            </div>
-            <div class='col-xs-offset-1 col-xs-5 player player2'>
-                <h2>Player 2</h2>
-                <img src="images/Ph03nyx-Super-Mario-Paper-Bowser.ico">
-            </div>
-        </div>
-        <div class="row">
-            <button class="btn-block reset_button reset_button_large">Reset</button>
-        </div>
-    </div><!-- End of player info -->
+    <!-- End of player info -->
+  </div><!-- End Wrapper -->
 
-    <audio id='mario_turn' src='sounds/smb_coin.wav'></audio>
-    <audio id='bowser_turn' src='sounds/smb_bowserfire.wav'></audio>
-    <audio id='mario_win' src='sounds/smb_world_clear.wav'></audio>
-    <audio id='bowser_win' src='sounds/smw_game_over.wav'></audio>
+  <div class="player_icons player_small">
+    <div>
+      <div class='player player1'>
+        <h2>Player 1</h2>
+        <img src="images/Ph03nyx-Super-Mario-Paper-Mario%20(1).ico">
+      </div>
+      <div class='player player2'>
+        <h2>Player 2</h2>
+        <img src="images/Ph03nyx-Super-Mario-Paper-Bowser.ico">
+      </div>
+    </div>
+    <div class='button'>
+      <button class="reset_button reset_button_large">Reset</button>
+    </div>
+  </div>
+  
+
+  <audio id='mario_turn' src='sounds/smb_coin.wav'></audio>
+  <audio id='bowser_turn' src='sounds/smb_bowserfire.wav'></audio>
+  <audio id='mario_win' src='sounds/smb_world_clear.wav'></audio>
+  <audio id='bowser_win' src='sounds/smw_game_over.wav'></audio>
 
 </body>
 
