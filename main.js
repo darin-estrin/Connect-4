@@ -33,6 +33,7 @@ function initGame() {
 }
 
 function addPlayerCoin() {
+  console.log(this);
   playerTurnOver = false;
   if ($(this).hasClass('column_1')) {
     column = col1;
@@ -54,9 +55,9 @@ function addPlayerCoin() {
     columnChosen = 5;
   }
   if (currentPlayer === 1) {
-    $(this).css('box-shadow', '7px 7px 12px red');
+    $(this).find('img').css('box-shadow', '7px 7px 12px red');
   } else {
-    $(this).css('box-shadow', '7px 7px 12px blue');
+    $(this).find('img').css('box-shadow', '7px 7px 12px blue');
   }
 
   for (var i = column.length - 1; (!playerTurnOver && i > 0); i--) {
@@ -64,13 +65,17 @@ function addPlayerCoin() {
       return;
     }
     if (currentPlayer === 1 && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
-      $(column[i]).addClass('player1_token');
+      $(column[i]).addClass('player1_token')
+        .find('img')
+        .replaceWith('<img src="images/mario_8bit1.png"/>');
       //saveData();
       playerTurnOver = true;
       var m = document.getElementById('mario_turn');
       m.play();
     } else if (currentPlayer === 2 && !$(column[i]).hasClass('player1_token') && !$(column[i]).hasClass('player2_token')) {
-      $(column[i]).addClass('player2_token');
+      $(column[i]).addClass('player2_token')
+        .find('img')
+        .replaceWith('<img src="images/bowser_8bit.png"/>');
       //saveData();
       playerTurnOver = true;
       var b = document.getElementById('bowser_turn');
@@ -236,6 +241,7 @@ function reset() {
   $('.coin_drop').show();
   $('.coin_slot').removeClass('player1_token');
   $('.coin_slot').removeClass('player2_token');
+  $('.coin_slot').find('img').replaceWith('<img src="images/question_mark.png" />');
   currentPlayer = 2;
   changeActivePlayer(currentPlayer);
   displayPlayer();
@@ -258,7 +264,7 @@ function displayDraw() {
     .text('Draw');
 }
 
-$('.column').on('mouseover', function() {
+$('.column img').on('mouseover', function() {
   if (currentPlayer === 1) {
     $(this).css('box-shadow', '7px 7px 12px blue');
   } else {
@@ -266,6 +272,6 @@ $('.column').on('mouseover', function() {
   }
 })
 
-$('.column').on('mouseleave', function() {
+$('.column img').on('mouseleave', function() {
   $(this).css('box-shadow', '7px 7px 5px #888888');
 })
